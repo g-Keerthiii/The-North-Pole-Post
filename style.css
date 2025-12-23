@@ -1,0 +1,490 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Mountains of Christmas', cursive;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    max-height: 100vh;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    transform: scale(1.1);
+}
+
+.audio-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #c41e3a;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.audio-toggle:hover {
+    transform: scale(1.1);
+    background: white;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    background: url('wood.png') center/cover;
+    background-color: #8B5A2B;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    flex-shrink: 0;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-family: 'Mountains of Christmas', cursive;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.95;
+    font-family: 'Dancing Script', cursive;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+    position: relative;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 0 0 400px;
+    background: linear-gradient(to bottom, #fffbf0, #fff5e1);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.15), 0 4px 20px rgba(0,0,0,0.1);
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.sidebar h2 {
+    color: #c41e3a;
+    margin-bottom: 16px;
+    font-size: 1.8rem;
+    text-align: center;
+    font-family: 'Mountains of Christmas', cursive;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.tool-group {
+    margin-bottom: 18px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed #d4c5a9;
+}
+
+.tool-group:last-child {
+    border-bottom: none;
+}
+
+.tool-group h3 {
+    color: #2d5016;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    font-family: 'Mountains of Christmas', cursive;
+    font-weight: 700;
+}
+
+.tool-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.tool-item {
+    width: 100%;
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    background: #d4b896;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+}
+
+.tool-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.tool-item:hover {
+    transform: scale(1.05);
+    border-color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Message Input */
+#message-input {
+    width: 100%;
+    min-height: 60px;
+    padding: 8px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 0.9rem;
+    resize: vertical;
+    margin-bottom: 8px;
+}
+
+#message-input:focus {
+    outline: none;
+    border-color: #c41e3a;
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 8px;
+    font-family: 'Mountains of Christmas', cursive;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+#add-message-btn {
+    background: #2d5016;
+    color: white;
+}
+
+#add-message-btn:hover {
+    background: #3d6926;
+}
+
+.btn-secondary {
+    background: #757575;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #616161;
+}
+
+.btn-primary {
+    background: #c41e3a;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #a01828;
+}
+
+/* Canvas Area */
+.canvas-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.postcard {
+    width: auto;
+    height: auto;
+    background: url('writepad.png') center/contain no-repeat;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    position: relative;
+    overflow: visible;
+    min-width: 600px;
+    min-height: 400px;
+}
+
+.postcard-content {
+    width: 600px;
+    height: 400px;
+    position: relative;
+}
+
+.instructions {
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.2);
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    font-family: 'Mountains of Christmas', cursive;
+}
+
+.instructions p {
+    margin: 5px 0;
+}
+
+/* Placed Items */
+.placed-item {
+    position: absolute;
+    cursor: move;
+    transition: transform 0.1s ease;
+    user-select: none;
+}
+
+.placed-item:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.placed-item.dragging {
+    opacity: 0.7;
+    cursor: grabbing;
+}
+
+.resize-handle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #c41e3a;
+    border: 2px solid white;
+    border-radius: 50%;
+    bottom: -6px;
+    right: -6px;
+    cursor: nwse-resize;
+    z-index: 10;
+    display: none;
+}
+
+.placed-item:hover .resize-handle {
+    display: block;
+}
+
+.delete-btn {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 24px;
+    height: 24px;
+    background: #c41e3a;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    line-height: 1;
+}
+
+.placed-item:hover .delete-btn {
+    display: flex;
+}
+
+.placed-frame {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.placed-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.placed-sticker,
+.placed-stamp {
+    width: 80px;
+    height: 80px;
+}
+
+.placed-sticker img,
+.placed-stamp img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.placed-message {
+    background: transparent;
+    padding: 10px;
+    border-radius: 0;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 1.3rem;
+    color: #000;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+    max-width: 400px;
+    word-wrap: break-word;
+    line-height: 1.6;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Scrollbar Styling */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #c41e3a;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #a01828;
+}
+
+.tools-section {
+    /* Allow natural height for scrolling */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex: 1;
+        max-width: 100%;
+        max-height: none;
+    }
+
+    .postcard {
+        width: 90vw;
+        max-width: 600px;
+        height: 60vw;
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .tool-items {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Snowfall Animation */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    text-shadow: 0 0 5px rgba(255,255,255,0.8);
+    pointer-events: none;
+    z-index: 9999;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Cursor Snow Trail */
+.cursor-snow {
+    position: fixed;
+    pointer-events: none;
+    color: white;
+    font-size: 12px;
+    z-index: 9999;
+    animation: fade-out 2s forwards;
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}

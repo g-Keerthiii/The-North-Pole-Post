@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Christmas Postcard Creator</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Dancing+Script:wght@400;700&family=Quicksand:wght@400;600;700&family=Gloria+Hallelujah&family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <video autoplay loop muted playsinline class="background-video" id="bg-video">
+            <source src="background.mp4" type="video/mp4">
+        </video>
+        <button class="audio-toggle" id="audio-toggle" title="Toggle Audio">🔇</button>
+        <div class="container">
+            <header>
+                <h1>Christmas Postcard Creator</h1>
+                <p class="subtitle">Create nostalgic Christmas postcards with love</p>
+            </header>
+
+            <div class="main-content">
+                <!-- Left Sidebar - Tools -->
+                <aside class="sidebar">
+                    <div class="tools-section">
+                        <h2>Decorations</h2>
+                        
+                        <div class="tool-group">
+                            <h3>Frames</h3>
+                            <div class="tool-items" id="frames-container">
+                                <!-- Frames will be loaded here -->
+                            </div>
+                        </div>
+
+                        <div class="tool-group">
+                            <h3>Stickers</h3>
+                            <div class="tool-items" id="stickers-container">
+                                <!-- Stickers will be loaded here -->
+                            </div>
+                        </div>
+
+                        <div class="tool-group">
+                            <h3>Stamps</h3>
+                            <div class="tool-items" id="stamps-container">
+                                <!-- Stamps will be loaded here -->
+                            </div>
+                        </div>
+
+                        <div class="tool-group">
+                            <h3>Message</h3>
+                            <textarea id="message-input" placeholder="Write your Christmas message here..."></textarea>
+                            <button id="add-message-btn" class="btn">Add Message</button>
+                        </div>
+
+                        <div class="tool-group">
+                            <h3>Actions</h3>
+                            <button id="clear-btn" class="btn btn-secondary">Clear All</button>
+                            <button id="download-btn" class="btn btn-primary">Download Postcard</button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Center - Canvas Area -->
+                <main class="canvas-area">
+                    <div class="postcard" id="postcard">
+                        <div class="postcard-content" id="postcard-content">
+                            <!-- User's design will be added here -->
+                        </div>
+                    </div>
+                    <div class="instructions">
+                        <p>Click on frames, stickers, or stamps to add them to your postcard</p>
+                        <p>Drag items to reposition • Click items to delete them</p>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
