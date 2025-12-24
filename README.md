@@ -84,3 +84,5 @@ Created with festive cheer for spreading Christmas joy through personalized digi
 ## License
 
 This project is open source and available under the MIT License.
+
+its a project just for fun and learning
